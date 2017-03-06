@@ -4,10 +4,24 @@
 var min = document.getElementById("min");
 var sec = document.getElementById("sec");
 var box = document.getElementById("box");
+var button = document.getElementById("startstop");
 var minSet = 25;
 var secSet = 0;
 var stopFlag = 0;
 var x;
+
+function startstop() {
+    if (button.value == "1") {
+        timer();
+        button.innerHTML = "Parse";
+        button.value = "0";
+    }
+    else {
+        stopTimer();
+        button.innerHTML = "Resume";
+        button.value = "1";
+    }
+}
 
 
 function timer() {
@@ -60,6 +74,7 @@ function reset() {
     box.style.height = 0;
     min.innerHTML = minSet;
     sec.innerHTML = "00";
+    button.innerHTML = "Start";
 }
 
 function plus() {

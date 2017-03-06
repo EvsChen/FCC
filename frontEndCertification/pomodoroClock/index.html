@@ -6,12 +6,12 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <h1 id="title">Pomodro Clock</h1>
+        <h1 id="title">Pomodoro Clock</h1>
         <div id="goal-list">
             <h1 id="goal-title">Tasks</h1>
             <span class="goal-item"></span>
         </div>
-        <div id="pomodro">
+        <div id="pomodoro">
             <div id="task-box">
                 <input id="input-task-box" type="text" value="Enter task name" onblur="checkInput()">
             </div>
@@ -30,9 +30,8 @@
                 </h1>
             </div>
             <div id="control-panel">
-                <button class="pomodro-button" onclick="timer()">Start</button>
-                <button class="pomodro-button" onclick="stopTimer()">Stop</button>
-                <button class="pomodro-button" onclick="reset()">Reset</button>
+                <button class="pomodoro-button" id="startstop" value="1" onclick="startstop()">Start</button>
+                <button class="pomodoro-button" onclick="reset()">Reset</button>
             </div>
         </div>
         <div id="info">Design and coded by <a href="https://github.com/EvsChen">EvsChen</a></div>

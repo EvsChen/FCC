@@ -28,7 +28,7 @@ body {
     text-align: left;
 }
 
-#pomodro {
+#pomodoro {
     float: right;
     width: 400px;
     margin: 0 auto;
@@ -100,8 +100,8 @@ body {
     text-align: center;
 }
 
-.pomodro-button {
-    width: 120px;
+.pomodoro-button {
+    width: 150px;
     height: 50px;
     text-align: center;
     font-size: 2em;
@@ -131,7 +131,7 @@ body {
     outline: none;
 }
 
-.pomodro-button:hover, .time-button:hover, #task-box input:hover{
+.pomodoro-button:hover, .time-button:hover, #task-box input:hover{
     color: #eb8c5c;
 }
 

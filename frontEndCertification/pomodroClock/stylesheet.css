@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #566fcc;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+}
+#title {
+    text-align: center;
+    font-size: 5em;
+}
+
+#goal-list {
+    float: left;
+    width: 500px;
+    text-align: center;
+    margin-left: 10%;
+}
+
+.goal-item {
+    margin-top: 10px;
+    border-bottom: 2px solid white;
+    font-size: 30px;
+    display: inline-block;
+    width: 400px;
+    height: 40px;
+    text-align: left;
+}
+
+#pomodro {
+    float: right;
+    width: 400px;
+    margin: 0 auto;
+    margin-right: 10%;
+    position: relative;
+
+}
+
+#task-box {
+    text-align: center;
+}
+
+#task-box input {
+    text-align: center;
+    height: 50px;
+    font-size: 30px;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    width: 300px;
+    background-color: #566fcc;
+    border: 0;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+#task-box input:focus {
+    border-bottom: 2px solid white;
+    transition-duration: 500ms;
+}
+
+#circle {
+    margin: 0 auto;
+    right: 50px;
+    width: 300px;
+    height: 300px;
+    border: 10px solid white;
+    border-radius: 50%;
+}
+
+#countdown {
+    font-size: 3em;
+    line-height: 280px;
+    width: 280px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#box {
+    height: 0px;
+    width: 280px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 80px;
+}
+
+#progress {
+    background-color: #FFFFFF;
+    opacity: 0.3;
+    margin: auto;
+    height: 280px;
+    width: 280px;
+    position: absolute;
+    border-radius: 50%;
+    bottom: 0px;
+}
+
+#control-panel {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pomodro-button {
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    font-size: 2em;
+    line-height: 40px;
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    border-radius: 10px;
+    border: 5px solid;
+    background-color: #566fcc;
+    outline: none;
+}
+
+.time-button {
+    width: 40px;
+    height: 40px;
+    line-height: 30px;
+    font-size: 40px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    background: transparent;
+    position: absolute;
+    top: 190px;
+    outline: none;
+}
+
+.pomodro-button:hover, .time-button:hover, #task-box input:hover{
+    color: #eb8c5c;
+}
+
+
+#plus {
+    left: 60px;
+}
+#minus {
+    right: 70px;
+}
+
+#time-span {
+    display: inline-block;
+    width: 180px;
+    margin: 0 auto;
+}
+
+#info {
+    position: absolute;
+    left: 3%;
+    bottom: 3%;
+}
+#info a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#info a:hover{
+    color: #eb8c5c;
+}

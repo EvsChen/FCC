@@ -2,11 +2,40 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="stylesheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
         <meta charset="utf-8">
     </head>
     <body>
-        <h2>Pomodro Clock</h2>
-
+        <h1 id="title">Pomodro Clock</h1>
+        <div id="goal-list">
+            <h1 id="goal-title">Tasks</h1>
+            <span class="goal-item"></span>
+        </div>
+        <div id="pomodro">
+            <div id="task-box">
+                <input id="input-task-box" type="text" value="Enter task name" onblur="checkInput()">
+            </div>
+            <div id="circle">
+                <div id="box">
+                    <div id="progress"></div>
+                </div>
+                <h1 id="countdown">
+                    <button class="time-button" id="plus" onclick="plus()">+</button>
+                    <span id="time-span">
+                        <span id="min">25</span>
+                        <span>:</span>
+                        <span id="sec">00</span>
+                    </span>
+                    <button class="time-button" id="minus" onclick="minus()">-</button>
+                </h1>
+            </div>
+            <div id="control-panel">
+                <button class="pomodro-button" onclick="timer()">Start</button>
+                <button class="pomodro-button" onclick="stopTimer()">Stop</button>
+                <button class="pomodro-button" onclick="reset()">Reset</button>
+            </div>
+        </div>
+        <div id="info">Design and coded by <a href="https://github.com/EvsChen">EvsChen</a></div>
     <script src="script.js" type="text/javascript"></script>
     </body>
 </html>

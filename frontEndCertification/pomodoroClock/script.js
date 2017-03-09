@@ -35,11 +35,11 @@ function timer() {
         var newSpan = document.createElement("span");
         var newTask = document.createTextNode(taskName);
         var list = document.getElementById("goal-list");
-        var goalItem = document.getElementsByClassName("goal-item");
+        var inputBox = document.getElementById("task-box");
         newSpan.className = "goal-item";
         newSpan.appendChild(newTask);
         console.log(newSpan);
-        list.insertBefore(newSpan,goalItem[0]);
+        list.insertBefore(newSpan,inputBox);
     }
     stopFlag = 0;
     x = setInterval(
@@ -74,6 +74,7 @@ function reset() {
     box.style.height = 0;
     min.innerHTML = minSet;
     sec.innerHTML = "00";
+    button.value = "1";
     button.innerHTML = "Start";
 }
 
@@ -93,4 +94,11 @@ function checkInput() {
     var taskName = document.getElementById("input-task-box").value;
     // alert("taskname is " + taskName);
     taskName == "" ? document.getElementById("input-task-box").value = "Enter task name" : taskName;
+}
+
+function submitInput() {
+    timer();
+    button.innerHTML = "Parse";
+    button.value = "0";
+    document.getElementById("input-task-box").value = "Enter task name";
 }

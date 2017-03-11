@@ -9,34 +9,36 @@ var yellow =document.getElementById("yellow");
 var checkbox = document.getElementById("checkbox");
 var start = document.querySelector("#start button");
 var count = document.getElementById("count-text");
+var startText = document.getElementById("start-text");
 var list = [red,blue,green,yellow];
 var clickSequence = [];
 var numList = [];
+var timeID = 0;
 
-var squares = document.getElementById("squares");
-
-
-function addAfterClass() {
-    for (let i in arguments){
-        arguments[i].classList.add("afterStart");
-    }
-}
-
-function resetClass() {
-    for (let i in arguments) {
-        arguments[i].classList.remove("afterStart");
-    }
-}
 
 checkbox.onclick = function () {
     if (this.checked){
-        addAfterClass(red,blue,green,yellow);
-        start.onclick = generateSequence([]);
+        start.onclick = startGame;
+        for (let i = 0; i < 4; i++){
+            list[i].onmousedown =fade;
+            list[i].onmouseup = unfade;
+        }
     }
     else {
-        resetClass(red,blue,green,yellow);
         start.onclick = null;
+        count.innerHTML = "";
+        for (let i = 0; i < 4; i++){
+            list[i].onmousedown = null;
+            list[i].onmouseup = null;
+            list[i].onclick = null;
+        }
+        clearInterval(timeID);
     }
+}
+
+function startGame() {
+    generateSequence([]);
+    startText.innerHTML = "Reset:";
 }
 
 function generateSequence(array) {
@@ -49,8 +51,8 @@ function generateSequence(array) {
     else {
         time = Math.floor(3000/numList.length);
     }
+    console.log(numList.length);
     count.innerHTML = numList.length;
-    // count.innerHTML = "Right!";
     simuClickTime(numList,time);
     for (let i = 0; i < 4; i++){
         list[i].onclick = checkInput;
@@ -59,9 +61,9 @@ function generateSequence(array) {
 
 function simuClickTime(array,time) {
     var i = 0;
-    var timeID = setInterval(function () {
+    timeID = setInterval(function () {
         list[array[i]].style.opacity = 0.6;
-        window.setTimeout(function () {
+        setTimeout(function () {
             list[array[i]].style.opacity = 1;
             i++;
         },time);
@@ -71,13 +73,14 @@ function simuClickTime(array,time) {
     },100+time);
 }
 
+function fade() {
+    this.style.opacity = 0.6;
+}
+function unfade() {
+    this.style.opacity = 1;
+}
+
 function checkInput() {
-    this.onmousedown = function() {
-        this.style.opacity = 0.6;
-    }
-    this.onmouseup = function () {
-        this.style.opacity = 1;
-    }
     let j = 0;
     switch (this.id){
         case "red": j = 0;
@@ -101,11 +104,22 @@ function checkInput() {
 
 function showFalse() {
     count.innerHTML = "False";
-    setTimeout(generateSequence([]),100);
+    console.log("false!");
+    setTimeout(function(){
+        generateSequence([]);
+    },1000);
 }
 
 function showRight() {
     count.innerHTML = "Right";
-    setTimeout(generateSequence(numList), 200);
+    console.log("right!");
+    if (numList.length == 20){
+        count.innerHTML = "You win!";
+    }
+    else{
+        setTimeout(function () {
+            generateSequence(numList);
+        },500);
+    }
 }
 

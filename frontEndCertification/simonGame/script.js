@@ -6,7 +6,8 @@ var red = document.getElementById("red");
 var blue = document.getElementById("blue");
 var green = document.getElementById("green");
 var yellow =document.getElementById("yellow");
-var checkbox = document.getElementById("checkbox");
+var checkbox = document.getElementById("onoff-checkbox");
+var strict = document.getElementById("strict-checkbox");
 var start = document.querySelector("#start button");
 var count = document.getElementById("count-text");
 var startText = document.getElementById("start-text");
@@ -33,6 +34,7 @@ checkbox.onclick = function () {
             list[i].onclick = null;
         }
         clearInterval(timeID);
+        startText.innerHTML = "Start:";
     }
 }
 
@@ -45,17 +47,20 @@ function generateSequence(array) {
     clickSequence = [];
     numList = array;
     numList.push(Math.floor(Math.random()*4));
-    if (numList.length < 5) {
-        var time = 500;
-    }
-    else {
-        time = Math.floor(3000/numList.length);
-    }
-    console.log(numList.length);
+    // console.log(numList.length);
     count.innerHTML = numList.length;
-    simuClickTime(numList,time);
+    simuClickTime(numList,calcuTime(numList.length));
     for (let i = 0; i < 4; i++){
         list[i].onclick = checkInput;
+    }
+}
+
+function calcuTime(length) {
+    if (length < 5) {
+        return 500;
+    }
+    else {
+        return Math.floor(3000/length);
     }
 }
 
@@ -104,15 +109,22 @@ function checkInput() {
 
 function showFalse() {
     count.innerHTML = "False";
-    console.log("false!");
-    setTimeout(function(){
-        generateSequence([]);
-    },1000);
+    if (!strict.checked) {
+        clickSequence = [];
+        setTimeout(function (){
+            count.innerHTML = numList.length;
+            simuClickTime(numList,calcuTime(numList.length));
+        },800);
+    }
+    else {
+        setTimeout(function(){
+            generateSequence([]);
+        },1000);
+    }
 }
 
 function showRight() {
     count.innerHTML = "Right";
-    console.log("right!");
     if (numList.length == 20){
         count.innerHTML = "You win!";
     }
